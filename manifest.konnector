@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "name": "Trainline",
+  "type": "node",
+  "icon": "./trainline.svg",
+  "slug": "trainline",
+  "description": "Get all the bill from trainline",
+  "source": "https://github.com/cozy-labs/trainline@build",
+  "locales": {
+    "fr": {
+      "description": "Récupère toutes vos factures trainline",
+      "permissions": {
+        "bills": {
+          "description": "Utilisé pour sauvegarder les données de facturation"
+        },
+        "files": {
+          "description": "Utilisé pour sauvegarder les factures"
+        }
+      }
+    }
+  },
+  "permissions": {
+    "bills": {
+      "description": "Required to save the bills data",
+      "type": "io.cozy.bills"
+    },
+    "files": {
+      "description": "Required to save the bills",
+      "type": "io.cozy.files"
+    }
+  },
+  "developer": {
+    "name": "Your name or organization",
+    "url": "http://your-homepage-here.org"
+  }
+}
