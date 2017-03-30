@@ -5,7 +5,7 @@
   "icon": "./trainline.svg",
   "slug": "trainline",
   "description": "Get all the bill from trainline",
-  "source": "https://github.com/cozy-labs/trainline@build",
+  "source": "git://github.com/doubleface/cozy-konnector-trainline.git",
   "locales": {
     "fr": {
       "description": "Récupère toutes vos factures trainline",
