@@ -1,25 +1,23 @@
 'use strict'
 
-const baseKonnector = require('./lib/base_konnector')
-const filterExisting = require('./lib/filter_existing')
-const localization = require('./lib/localization_manager')
-const saveDataAndFile = require('./lib/save_data_and_file')
+const {baseKonnector, filterExisting, saveDataAndFile, models} = require('cozy-konnector-libs')
 const requestJson = require('request-json')
 const request = require('request')
+// require('request-debug')(request)
 const moment = require('moment')
 
-const Bill = require('./models/bill')
+const Bill = models.bill
 // The goal of this connector is to fetch bills from the
 // service captaintrain.com
 
 const logger = require('printit')({
-  prefix: 'Captaintrain',
+  prefix: 'Trainline',
   date: true
 })
 
 module.exports = baseKonnector.createNew({
   name: 'Trainline',
-  vendorLink: 'www.captaintrain.com',
+  vendorLink: 'www.trainline.fr',
 
   category: 'transport',
   color: {
@@ -27,22 +25,7 @@ module.exports = baseKonnector.createNew({
     css: '#48D5B5'
   },
 
-  fields: {
-    login: {
-      type: 'text'
-    },
-    password: {
-      type: 'password'
-    },
-    folderPath: {
-      type: 'folder',
-      advanced: true
-    }
-  },
-
-  dataType: [
-    'bill'
-  ],
+  dataType: ['bill'],
 
   models: [Bill],
 
@@ -50,14 +33,13 @@ module.exports = baseKonnector.createNew({
     login,
     fetchBills,
     customFilterExisting,
-    customSaveDataAndFile,
-    buildNotifContent
+    customSaveDataAndFile
   ]
 
 })
 
 const fileOptions = {
-  vendor: 'Captaintrain',
+  vendor: 'Trainline',
   dateFormat: 'YYYYMMDD'
 }
 
@@ -346,16 +328,4 @@ function customFilterExisting (requiredFields, entries, data, next) {
 function customSaveDataAndFile (requiredFields, entries, data, next) {
   saveDataAndFile(logger, Bill, fileOptions, ['facture'])(
       requiredFields, entries, data, next)
-}
-
-function buildNotifContent (requiredFields, entries, data, next) {
-  if (entries.filtered && entries.filtered.length > 0) {
-    const localizationKey = 'notification bills'
-    const options = {
-      smart_count: entries.filtered.length
-    }
-    entries.notifContent = localization.t(localizationKey, options)
-  }
-
-  next()
 }

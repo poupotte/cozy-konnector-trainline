@@ -2,13 +2,12 @@
   "version": "1.0.0",
   "name": "Trainline",
   "type": "node",
-  "icon": "./trainline.svg",
   "slug": "trainline",
   "description": "Get all the bill from trainline",
   "source": "git://github.com/doubleface/cozy-konnector-trainline.git",
   "locales": {
     "fr": {
-      "description": "Récupère toutes vos factures trainline",
+      "description": "Récupère toutes vos factures",
       "permissions": {
         "bills": {
           "description": "Utilisé pour sauvegarder les données de facturation"
