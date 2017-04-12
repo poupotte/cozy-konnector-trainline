@@ -249,7 +249,7 @@ function fetchBills (requiredFields, entries, data, next) {
       const bill = {
         pdfurl: proof.url,
         type: 'train',
-        vendor: 'Captain Train',
+        vendor: 'Trainline',
         system,
         date: moment(proof.created_at).hours(0)
                                       .minutes(0)
