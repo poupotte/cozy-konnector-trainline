@@ -14,7 +14,7 @@
     "request-json": "^0.6.1"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node build/index.js",
     "predev": "env-cmd ./data/env.js cozy-authenticate manifest.konnectors",
     "dev": "env-cmd ./data/env.js npm start",
     "standalone": "env-cmd ./data/env_standalone.js npm start"
