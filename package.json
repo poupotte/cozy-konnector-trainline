@@ -6,7 +6,7 @@
   "author": "",
   "license": "AGPL-3.0",
   "dependencies": {
-    "cozy-konnector-libs": "^1.0.11",
+    "cozy-konnector-libs": "^1.1.0",
     "moment": "^2.18.1",
     "node-polyglot": "^2.2.2",
     "printit": "^0.1.20",
@@ -14,9 +14,9 @@
     "request-json": "^0.6.1"
   },
   "scripts": {
-    "start": "node build/index.js",
-    "predev": "env-cmd ./data/env.js cozy-authenticate manifest.konnectors",
-    "dev": "env-cmd ./data/env.js npm start",
+    "start": "node index.js",
+    "predev": "env-cmd ./data/env_development.js cozy-authenticate manifest.konnector",
+    "dev": "env-cmd ./data/env_development.js npm start",
     "standalone": "env-cmd ./data/env_standalone.js npm start"
   },
   "devDependencies": {
