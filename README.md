@@ -77,6 +77,9 @@ After that, your konnector is running but should not work since you did not spec
 the target service. You can do this in a [./data/env_fields.json] (you have
 [./data/env_fields.json.template] available as a template)
 
+Now run ```yarn init:dev:account``` to create an account in the targeted cozy which will be used by
+the connector (the id of the account is saved in ./data/account.txt)
+
 Now run `yarn dev` one more time, it should be ok.
 
 ### Hack
