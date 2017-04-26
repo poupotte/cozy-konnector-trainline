@@ -5,6 +5,17 @@
   "slug": "trainline",
   "description": "Get all the bill from trainline",
   "source": "git://github.com/cozy/cozy-konnector-trainline.git",
+  "fields": {
+    "save_folder": {
+      "doctype": "io.cozy.files",
+      "type": "folder",
+    },
+    "account": {
+      "doctype": "io.cozy.accounts",
+      "account_type": "trainline",
+      "accountFormat": "login,password",
+    }
+  },
   "locales": {
     "fr": {
       "description": "Récupère toutes vos factures",
