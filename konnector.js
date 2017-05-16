@@ -1,6 +1,6 @@
 'use strict'
 
-const {baseKonnector, filterExisting, saveDataAndFile, models} = require('cozy-konnector-libs')
+const {log, baseKonnector, filterExisting, saveDataAndFile, models} = require('cozy-konnector-libs')
 const requestJson = require('request-json')
 const request = require('request')
 // require('request-debug')(request)
@@ -9,11 +9,6 @@ const moment = require('moment')
 const Bill = models.bill
 // The goal of this connector is to fetch bills from the
 // service captaintrain.com
-
-const logger = require('printit')({
-  prefix: 'Trainline',
-  date: true
-})
 
 module.exports = baseKonnector.createNew({
   name: 'Trainline',
@@ -61,7 +56,6 @@ function login (requiredFields, entries, data, next) {
   }
   request(options, (err) => {
     if (err) {
-      logger.error(err)
       return next(err)
     }
 
@@ -84,10 +78,9 @@ function login (requiredFields, entries, data, next) {
     const signinPath = `${baseUrl}api/v5/account/signin`
     client.post(signinPath, signinForm, (err, res, body) => {
       if (err) {
-        logger.error(err)
         return next(err)
       }
-      logger.info('Connected')
+      log('info', 'Connected')
       if (res.statusCode === 422) {
         return next('bad credentials')
       }
@@ -100,7 +93,6 @@ function login (requiredFields, entries, data, next) {
       // information
       client.get(`${baseUrl}api/v5/pnrs`, (err, res, body) => {
         if (err) {
-          logger.error(err)
           return next(err)
         }
         // We check there are bills
@@ -134,7 +126,6 @@ function computeNextDate (pnrs) {
 function getNextMetaData (startdate, data, callback) {
   client.get(`${baseUrl}api/v5/pnrs?date=${startdate}`, (err, res, body) => {
     if (err) {
-      logger.error(err)
       return callback(err)
     }
     if (body.proofs && body.proofs.length > 0) {
@@ -221,8 +212,8 @@ function fetchBills (requiredFields, entries, data, next) {
       )
     } catch (e) {
       // We do nothing with the error as linkedPNR is set anyway.
-      logger.error('linkedPNR')
-      logger.error(e)
+      log('error', 'linkedPNR')
+      log('error', e)
     }
 
     // For some unknown reason, some users don't have system set for the pnr.
@@ -322,10 +313,10 @@ function fetchBills (requiredFields, entries, data, next) {
 }
 
 function customFilterExisting (requiredFields, entries, data, next) {
-  filterExisting(logger, Bill)(requiredFields, entries, data, next)
+  filterExisting(null, Bill)(requiredFields, entries, data, next)
 }
 
 function customSaveDataAndFile (requiredFields, entries, data, next) {
-  saveDataAndFile(logger, Bill, fileOptions, ['facture'])(
+  saveDataAndFile(null, Bill, fileOptions, ['facture'])(
       requiredFields, entries, data, next)
 }
