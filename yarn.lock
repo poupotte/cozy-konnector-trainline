@@ -402,8 +402,8 @@ cozy-client-js@^0.2.4:
   resolved "https://registry.yarnpkg.com/cozy-client-js/-/cozy-client-js-0.2.5.tgz#e4d9dd82fb35b2ca9724cd6684b8f9a2b26f3dac"
 
 cozy-konnector-libs@^2.4.0:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/cozy-konnector-libs/-/cozy-konnector-libs-2.3.2.tgz#3392d5e6ec263b5a5901d33fbb657d2499216b64"
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/cozy-konnector-libs/-/cozy-konnector-libs-2.4.0.tgz#7cddf73ac8de4210f16fee9c30843482ffbdf355"
   dependencies:
     async "^2.4.0"
     btoa "^1.1.2"
@@ -1605,7 +1605,7 @@ read-pkg@^1.0.0:
     normalize-package-data "^2.3.2"
     path-type "^1.0.0"
 
-readable-stream@^2.0.1, readable-stream@^2.0.5, readable-stream@~2.0.5:
+readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.5, readable-stream@~2.0.5:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.0.6.tgz#8f90341e68a53ccc928788dacfcd11b36eb9b78e"
   dependencies:
@@ -1616,7 +1616,7 @@ readable-stream@^2.0.1, readable-stream@^2.0.5, readable-stream@~2.0.5:
     string_decoder "~0.10.x"
     util-deprecate "~1.0.1"
 
-readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.1.4, readable-stream@^2.2.6:
+readable-stream@^2.0.6, readable-stream@^2.1.4, readable-stream@^2.2.6:
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.9.tgz#cf78ec6f4a6d1eb43d26488cac97f042e74b7fc8"
   dependencies:
