@@ -67341,7 +67341,11 @@ function fetchBills (requiredFields, entries, data, next) {
     }
   }
 
-  entries.fetched = filteredBills
+  filteredBills.sort((a, b) => a.unix() < b.unix() ? 1 : -1)
+
+  // only fetch the last 10 bills to avoid being timeouted
+  entries.fetched = filteredBills.splice(0, 10)
+
   next()
 }
 
