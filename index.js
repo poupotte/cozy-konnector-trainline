@@ -67341,7 +67341,7 @@ function fetchBills (requiredFields, entries, data, next) {
     }
   }
 
-  filteredBills.sort((a, b) => a.unix() < b.unix() ? 1 : -1)
+  filteredBills.sort((a, b) => a.date.unix() < b.date.unix() ? 1 : -1)
 
   // only fetch the last 10 bills to avoid being timeouted
   entries.fetched = filteredBills.splice(0, 10)
@@ -79271,7 +79271,7 @@ module.exports = {
 
         file.on('end', () => {
           log(`File ${finalPath} created`)
-          resolve()
+          resolve({_id: options.name})
         })
 
         writeStream.on('error', err => {
