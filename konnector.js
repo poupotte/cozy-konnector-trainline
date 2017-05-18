@@ -82,7 +82,7 @@ function login (requiredFields, entries, data, next) {
       }
       log('info', 'Connected')
       if (res.statusCode === 422) {
-        return next('bad credentials')
+        return next('LOGIN_FAILED')
       }
       // Retrieve token for json client
       const token = body.meta.token
