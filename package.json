@@ -22,7 +22,8 @@
     "predev": "npm run oauth && env-cmd ./data/env.js cozy-init-dev-account ./data/account.txt ./data/env_fields.json",
     "dev": "env-cmd ./data/env_development.js npm start",
     "standalone": "env-cmd ./data/env_standalone.js npm start",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "git-directory-deploy --username Cozy --email contact@cozycloud.cc --directory build/ --repo=https://$GITHUB_TOKEN@github.com/cozy/cozy-konnector-trainline.git"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^2.0.0",
