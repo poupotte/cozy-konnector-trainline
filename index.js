@@ -79271,7 +79271,7 @@ module.exports = {
 
         file.on('end', () => {
           log(`File ${finalPath} created`)
-          resolve({_id: options.name})
+          resolve()
         })
 
         writeStream.on('error', err => {
