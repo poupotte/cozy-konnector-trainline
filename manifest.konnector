@@ -3,7 +3,6 @@
   "name": "Trainline",
   "type": "node",
   "slug": "trainline",
-  "description": "Get all the bill from trainline",
   "source": "git://github.com/cozy/cozy-konnector-trainline.git",
   "fields": {
     "save_folder": {
