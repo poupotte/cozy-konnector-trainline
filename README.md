@@ -88,7 +88,8 @@ parameters for your konnector.
 
 ### Maintainer
 
-The lead maintainers for this konnector is <YOUR NAME>
+The lead maintainer for this konnector is @doubleface for Cozy Cloud, with
+contributions from Phyks and ZeHiro.
 
 
 ### Get in touch
@@ -104,7 +105,7 @@ You can reach the Cozy Community by:
 License
 -------
 
-Trainline Konnector is developed by <your name> and distributed under the [AGPL v3 license][agpl-3.0].
+Trainline Konnector is developed by Cozy Cloud and distributed under the [AGPL v3 license][agpl-3.0].
 
 [cozy]: https://cozy.io "Cozy Cloud"
 [agpl-3.0]: https://www.gnu.org/licenses/agpl-3.0.html
