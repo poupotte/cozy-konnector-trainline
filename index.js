@@ -53867,6 +53867,10 @@ module.exports = new BaseKonnector(function fetch (fields) {
     timeout: Date.now() + 60 * 1000,
     identifiers: 'trainline'
   }))
+  .catch(err => {
+    log('error', err.message, 'trainline connector error')
+    console.log('trainline connector error')
+  })
 })
 
 const baseUrl = 'https://www.captaintrain.com/'
