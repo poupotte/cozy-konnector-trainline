@@ -1,6 +1,6 @@
 'use strict'
 
-const {log, BaseKonnector, saveBills, request} = require('cozy-konnector-libs')
+const {log, BaseKonnector, saveBills, request, retry} = require('cozy-konnector-libs')
 const moment = require('moment')
 let rq = request({
   // debug: true
@@ -10,7 +10,11 @@ let rq = request({
 // service trainline.fr
 module.exports = new BaseKonnector(function fetch (fields) {
   return login(fields)
-  .then(data => fetchBills(data))
+  .then(data => retry(fetchBills, {
+    interval: 3000,
+    throw_original: true,
+    args: [data]
+  }))
   .then(entries => saveBills(entries, fields.folderPath, {
     timeout: Date.now() + 60 * 1000,
     identifiers: 'trainline'
