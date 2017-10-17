@@ -10,12 +10,13 @@
   "author": "",
   "license": "AGPL-3.0",
   "dependencies": {
-    "cozy-konnector-libs": "3.0.2",
-    "request-json": "^0.6.2"
+    "cozy-konnector-libs": "3.0.2"
   },
   "scripts": {
     "dev": "cozy-konnector-dev",
     "standalone": "cozy-konnector-standalone",
+    "standalone:record": "REPLAY=record cozy-konnector-standalone",
+    "standalone:replay": "REPLAY=replay cozy-konnector-standalone",
     "build": "webpack",
     "deploy:travis": "git-directory-deploy --username Cozy --email contact@cozycloud.cc --directory build/ --repo=https://$GITHUB_TOKEN@github.com/cozy/cozy-konnector-trainline.git",
     "deploy": "git-directory-deploy --directory build/ --branch build --repo=https://github.com/cozy/cozy-konnector-trainline.git"

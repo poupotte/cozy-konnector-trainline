@@ -25,7 +25,10 @@ desktop.ini
 # Editors / IDEs
 .floo
 .flooignore
+.idea/
 
 # Default
 # /!\ KEEP THIS SECTION THE LAST ONE
 !.gitkeep
+
+fixtures/*
