@@ -53852,7 +53852,7 @@ return zhTw;
 "use strict";
 
 
-const {log, BaseKonnector, saveBills, request} = __webpack_require__(452)
+const {log, BaseKonnector, saveBills, request, retry} = __webpack_require__(452)
 const moment = __webpack_require__(0)
 let rq = request({
   // debug: true
@@ -53862,7 +53862,11 @@ let rq = request({
 // service trainline.fr
 module.exports = new BaseKonnector(function fetch (fields) {
   return login(fields)
-  .then(data => fetchBills(data))
+  .then(data => retry(fetchBills, {
+    interval: 3000,
+    throw_original: true,
+    args: [data]
+  }))
   .then(entries => saveBills(entries, fields.folderPath, {
     timeout: Date.now() + 60 * 1000,
     identifiers: 'trainline'
