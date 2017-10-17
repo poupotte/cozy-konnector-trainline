@@ -53869,7 +53869,7 @@ module.exports = new BaseKonnector(function fetch (fields) {
   }))
   .catch(err => {
     log('error', err.message, 'trainline connector error')
-    console.log('trainline connector error')
+    console.log(err, 'trainline connector error')
   })
 })
 
