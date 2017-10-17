@@ -2,7 +2,6 @@
 
 const {log, BaseKonnector, saveBills} = require('cozy-konnector-libs')
 const requestJson = require('request-json')
-const request = require('request')
 const moment = require('moment')
 
 // The goal of this connector is to fetch bills from the
@@ -25,66 +24,51 @@ client.headers['user-agent'] = userAgent
 function login (fields) {
   const data = {}
   return new Promise((resolve, reject) => {
-    const options = {
-      method: 'GET',
-      url: `${baseUrl}signin`,
-      headers: {
-        'User-Agent': userAgent,
-        Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-      },
-      jar: true
+    // Signin form
+    const signinForm = {
+      concur_auth_code: null,
+      concur_migration_type: null,
+      concur_new_email: null,
+      correlation_key: null,
+      email: fields.login,
+      facebook_id: null,
+      facebook_token: null,
+      google_code: null,
+      google_id: null,
+      password: fields.password,
+      source: null,
+      user_itokend: null
     }
-    request(options, (err) => {
+    // Signin
+    const signinPath = `${baseUrl}api/v5/account/signin`
+    client.post(signinPath, signinForm, (err, res, body) => {
       if (err) {
         return reject(err)
       }
-
-      // Signin form
-      const signinForm = {
-        concur_auth_code: null,
-        concur_migration_type: null,
-        concur_new_email: null,
-        correlation_key: null,
-        email: fields.login,
-        facebook_id: null,
-        facebook_token: null,
-        google_code: null,
-        google_id: null,
-        password: fields.password,
-        source: null,
-        user_itokend: null
+      log('info', 'Connected')
+      if (res.statusCode === 422) {
+        return reject(new Error('LOGIN_FAILED'))
       }
-      // Signin
-      const signinPath = `${baseUrl}api/v5/account/signin`
-      client.post(signinPath, signinForm, (err, res, body) => {
+      // Retrieve token for json client
+      const token = body.meta.token
+      //  client.headers.cookie = cookie;
+      client.headers.Authorization = `Token token="${token}"`
+      data.authHeader = `Token token="${token}"`
+      // the api/v5/pnrs uri gives all information necessary to get bill
+      // information
+      client.get(`${baseUrl}api/v5/pnrs`, (err, res, body) => {
         if (err) {
           return reject(err)
         }
-        log('info', 'Connected')
-        if (res.statusCode === 422) {
-          return reject(new Error('LOGIN_FAILED'))
+        // We check there are bills
+        if (body.proofs && body.proofs.length > 0) {
+          saveMetadata(data, body)
+          getNextMetaData(computeNextDate(body.pnrs), data)
+          .then(() => resolve(data))
+          .catch(err => reject(err))
+        } else {
+          return resolve(data)
         }
-        // Retrieve token for json client
-        const token = body.meta.token
-      //  client.headers.cookie = cookie;
-        client.headers.Authorization = `Token token="${token}"`
-        data.authHeader = `Token token="${token}"`
-        // the api/v5/pnrs uri gives all information necessary to get bill
-        // information
-        client.get(`${baseUrl}api/v5/pnrs`, (err, res, body) => {
-          if (err) {
-            return reject(err)
-          }
-          // We check there are bills
-          if (body.proofs && body.proofs.length > 0) {
-            saveMetadata(data, body)
-            getNextMetaData(computeNextDate(body.pnrs), data)
-            .then(() => resolve(data))
-            .catch(err => reject(err))
-          } else {
-            return resolve(data)
-          }
-        })
       })
     })
   })
