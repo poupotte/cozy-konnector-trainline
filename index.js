@@ -54223,7 +54223,7 @@ module.exports = new BaseKonnector(function fetch (fields) {
   })
 })
 
-const baseUrl = 'https://www.captaintrain.com/'
+const baseUrl = 'https://www.trainline.eu/'
 
 function login (fields) {
   // Signin form
@@ -54242,7 +54242,7 @@ function login (fields) {
     user_itokend: null
   }
   // Signin
-  const signinPath = `${baseUrl}api/v5/account/signin`
+  const signinPath = `${baseUrl}api/v5_1/account/signin`
   return rq({
     uri: signinPath,
     method: 'POST',
@@ -54263,9 +54263,9 @@ function login (fields) {
       }
     })
 
-    // the api/v5/pnrs uri gives all information necessary to get bill
+    // the api/v5_1/pnrs uri gives all information necessary to get bill
     // information
-    return rq(`${baseUrl}api/v5/pnrs`)
+    return rq(`${baseUrl}api/v5_1/pnrs`)
     .then(body => {
       const data = {}
       // We check there are bills
@@ -54280,7 +54280,7 @@ function login (fields) {
 }
 
 function computeNextDate (pnrs) {
-  // To get new bills, it is necessary to get api/v5/pnrs?date=YYYY-MM-DD
+  // To get new bills, it is necessary to get api/v5_1/pnrs?date=YYYY-MM-DD
   // This function computes the date YYYY-MM-DD
   // YYYY-MM-DD :
   //    - DD: always 1
@@ -54296,7 +54296,7 @@ function computeNextDate (pnrs) {
 }
 
 function getNextMetaData (startdate, data) {
-  return rq(`${baseUrl}api/v5/pnrs?date=${startdate}`)
+  return rq(`${baseUrl}api/v5_1/pnrs?date=${startdate}`)
   .then(body => {
     if (body.proofs && body.proofs.length > 0) {
       saveMetadata(data, body)
@@ -54308,7 +54308,7 @@ function getNextMetaData (startdate, data) {
 }
 
 function saveMetadata (data, body) {
-  // Body structure received for api/v5/pnrs (with or without date parameter)
+  // Body structure received for api/v5_1/pnrs (with or without date parameter)
   //
   // body.pnrs (table of pnr):
   //  - id: unique identifier
