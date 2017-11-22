@@ -19,10 +19,6 @@ module.exports = new BaseKonnector(function fetch (fields) {
     timeout: Date.now() + 60 * 1000,
     identifiers: 'trainline'
   }))
-  .catch(err => {
-    log('error', err.message, 'trainline connector error')
-    console.log(err, 'trainline connector error')
-  })
 })
 
 const baseUrl = 'https://www.trainline.eu/'
@@ -49,10 +45,12 @@ function login (fields) {
     uri: signinPath,
     method: 'POST',
     form: signinForm,
-    resolveWithFullResponse: true
+    resolveWithFullResponse: true,
+    simple: false
   })
   .then(res => {
     log('info', 'Connected')
+
     if (res.statusCode === 422) {
       throw new Error('LOGIN_FAILED')
     }
