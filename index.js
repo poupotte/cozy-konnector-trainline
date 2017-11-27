@@ -156,6 +156,7 @@ function fetchBills (data) {
   const bills = []
   // List of already managed proofs
   const managedProofId = []
+  data.proofs = data.proofs || []
   for (const proof of data.proofs) {
     if (!proof.url) {
       // No need to go further.
