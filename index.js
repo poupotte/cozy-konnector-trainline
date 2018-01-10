@@ -4591,7 +4591,7 @@ return hooks;
 
 var global = __webpack_require__(6);
 var core = __webpack_require__(93);
-var hide = __webpack_require__(26);
+var hide = __webpack_require__(27);
 var redefine = __webpack_require__(40);
 var ctx = __webpack_require__(33);
 var PROTOTYPE = 'prototype';
@@ -6441,92 +6441,6 @@ module.exports = function (it, key) {
 
 /***/ }),
 /* 24 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value;
-  return value != null && (type == 'object' || type == 'function');
-}
-
-module.exports = isObject;
-
-
-/***/ }),
-/* 25 */
-/***/ (function(module, exports) {
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return value != null && typeof value == 'object';
-}
-
-module.exports = isObjectLike;
-
-
-/***/ }),
-/* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP = __webpack_require__(18);
-var createDesc = __webpack_require__(51);
-module.exports = __webpack_require__(22) ? function (object, key, value) {
-  return dP.f(object, key, createDesc(1, value));
-} : function (object, key, value) {
-  object[key] = value;
-  return object;
-};
-
-
-/***/ }),
-/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -6608,6 +6522,92 @@ log.namespace = function (namespace) {
     log(type, message, label, ns)
   }
 }
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports) {
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return value != null && (type == 'object' || type == 'function');
+}
+
+module.exports = isObject;
+
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports) {
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return value != null && typeof value == 'object';
+}
+
+module.exports = isObjectLike;
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var dP = __webpack_require__(18);
+var createDesc = __webpack_require__(51);
+module.exports = __webpack_require__(22) ? function (object, key, value) {
+  return dP.f(object, key, createDesc(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
 
 
 /***/ }),
@@ -7433,7 +7433,7 @@ if (__webpack_require__(22)) {
   var ctx = __webpack_require__(33);
   var anInstance = __webpack_require__(68);
   var propertyDesc = __webpack_require__(51);
-  var hide = __webpack_require__(26);
+  var hide = __webpack_require__(27);
   var redefineAll = __webpack_require__(67);
   var toInteger = __webpack_require__(54);
   var toLength = __webpack_require__(20);
@@ -8271,7 +8271,7 @@ module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(6);
-var hide = __webpack_require__(26);
+var hide = __webpack_require__(27);
 var has = __webpack_require__(23);
 var SRC = __webpack_require__(52)('src');
 var TO_STRING = 'toString';
@@ -15475,7 +15475,7 @@ module.exports = Object.keys || function keys(O) {
 // 22.1.3.31 Array.prototype[@@unscopables]
 var UNSCOPABLES = __webpack_require__(11)('unscopables');
 var ArrayProto = Array.prototype;
-if (ArrayProto[UNSCOPABLES] == undefined) __webpack_require__(26)(ArrayProto, UNSCOPABLES, {});
+if (ArrayProto[UNSCOPABLES] == undefined) __webpack_require__(27)(ArrayProto, UNSCOPABLES, {});
 module.exports = function (key) {
   ArrayProto[UNSCOPABLES][key] = true;
 };
@@ -15497,7 +15497,7 @@ module.exports = function (it, TYPE) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(43),
-    isObject = __webpack_require__(24);
+    isObject = __webpack_require__(25);
 
 /** `Object#toString` result references. */
 var asyncTag = '[object AsyncFunction]',
@@ -20545,7 +20545,7 @@ module.exports = keys;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsArguments = __webpack_require__(667),
-    isObjectLike = __webpack_require__(25);
+    isObjectLike = __webpack_require__(26);
 
 /** Used for built-in method references. */
 var objectProto = Object.prototype;
@@ -20625,7 +20625,7 @@ module.exports = keysIn;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseCreate = __webpack_require__(124),
-    isObject = __webpack_require__(24);
+    isObject = __webpack_require__(25);
 
 /**
  * Creates a function that produces an instance of `Ctor` regardless of
@@ -20667,7 +20667,7 @@ module.exports = createCtor;
 /* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(24);
+var isObject = __webpack_require__(25);
 
 /** Built-in value references. */
 var objectCreate = Object.create;
@@ -20739,7 +20739,7 @@ module.exports = replaceHolders;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(43),
-    isObjectLike = __webpack_require__(25);
+    isObjectLike = __webpack_require__(26);
 
 /** `Object#toString` result references. */
 var symbolTag = '[object Symbol]';
@@ -21108,7 +21108,7 @@ exports.f = Object.getOwnPropertySymbols;
 
 "use strict";
 
-var hide = __webpack_require__(26);
+var hide = __webpack_require__(27);
 var redefine = __webpack_require__(40);
 var fails = __webpack_require__(13);
 var defined = __webpack_require__(55);
@@ -24837,7 +24837,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(6);
-var hide = __webpack_require__(26);
+var hide = __webpack_require__(27);
 var uid = __webpack_require__(52);
 var TYPED = uid('typed_array');
 var VIEW = uid('view');
@@ -40455,7 +40455,7 @@ module.exports = shortOut;
 var eq = __webpack_require__(65),
     isArrayLike = __webpack_require__(49),
     isIndex = __webpack_require__(86),
-    isObject = __webpack_require__(24);
+    isObject = __webpack_require__(25);
 
 /**
  * Checks if the given arguments are from an iteratee call.
@@ -41439,7 +41439,7 @@ module.exports = arraySome;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsEqualDeep = __webpack_require__(755),
-    isObjectLike = __webpack_require__(25);
+    isObjectLike = __webpack_require__(26);
 
 /**
  * The base implementation of `_.isEqual` which supports partial comparisons
@@ -41587,7 +41587,7 @@ module.exports = arrayPush;
 /* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(24);
+var isObject = __webpack_require__(25);
 
 /**
  * Checks if `value` is suitable for strict equality comparisons, i.e. `===`.
@@ -41822,7 +41822,7 @@ var global = __webpack_require__(6);
 var DESCRIPTORS = __webpack_require__(22);
 var LIBRARY = __webpack_require__(66);
 var $typed = __webpack_require__(183);
-var hide = __webpack_require__(26);
+var hide = __webpack_require__(27);
 var redefineAll = __webpack_require__(67);
 var fails = __webpack_require__(13);
 var anInstance = __webpack_require__(68);
@@ -42186,7 +42186,7 @@ module.exports = function (done, value) {
 var LIBRARY = __webpack_require__(66);
 var $export = __webpack_require__(1);
 var redefine = __webpack_require__(40);
-var hide = __webpack_require__(26);
+var hide = __webpack_require__(27);
 var has = __webpack_require__(23);
 var Iterators = __webpack_require__(71);
 var $iterCreate = __webpack_require__(839);
@@ -42777,7 +42777,7 @@ webpackEmptyContext.id = 333;
 "use strict";
 
 
-const log = __webpack_require__(27)
+const log = __webpack_require__(24)
 
 const MSG = {
   TWOFACTOR: '2FA token requested'
@@ -42870,7 +42870,7 @@ const rq = request({
     'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:36.0) Gecko/20100101 Firefox/36.0'
   }
 })
-const log = __webpack_require__(27).namespace('saveFiles')
+const log = __webpack_require__(24).namespace('saveFiles')
 const cozy = __webpack_require__(50)
 const mimetypes = __webpack_require__(108)
 const errors = __webpack_require__(334)
@@ -43039,7 +43039,7 @@ function checkMimeWithPath (mime, filepath) {
  */
 
 const bluebird = __webpack_require__(42)
-const log = __webpack_require__(27).namespace('filterData')
+const log = __webpack_require__(24).namespace('filterData')
 
 const filterData = (entries, doctype, options = {}) => {
   const cozy = __webpack_require__(50)
@@ -43122,7 +43122,7 @@ module.exports = filterData
  * @module addData
  */
 const bluebird = __webpack_require__(42)
-const log = __webpack_require__(27).namespace('addData')
+const log = __webpack_require__(24).namespace('addData')
 
 module.exports = (entries, doctype) => {
   const cozy = __webpack_require__(50)
@@ -43149,6 +43149,7 @@ module.exports = (entries, doctype) => {
 const moment = __webpack_require__(0)
 const bluebird = __webpack_require__(42)
 const { findMatchingOperation } = __webpack_require__(943)
+const log = __webpack_require__(24).namespace('linkBankOperations')
 
 const DOCTYPE = 'io.cozy.bank.operations'
 const DEFAULT_AMOUNT_DELTA = 0.001
@@ -43311,7 +43312,7 @@ class Linker {
   linkMatchingOperation (bill, operations, options) {
     const matchingOp = findMatchingOperation(bill, operations, options)
     if (matchingOp) {
-      if (!matchingOp) { return }
+      log('debug', 'Found matching ', bill, matchingOp)
       return this.addBillToOperation(bill, matchingOp).then(() => matchingOp)
     }
   }
@@ -55432,7 +55433,7 @@ function getFileName (date) {
 __webpack_require__(460)
 
 const requestFactory = __webpack_require__(205)
-const log = __webpack_require__(27).namespace('cozy-konnector-libs')
+const log = __webpack_require__(24).namespace('cozy-konnector-libs')
 
 module.exports = {
   BaseKonnector: __webpack_require__(806),
@@ -55462,7 +55463,7 @@ function deprecate (wrapped, message) {
 /* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const log = __webpack_require__(27).namespace('Error Interception')
+const log = __webpack_require__(24).namespace('Error Interception')
 
 // This will catch exception which would be uncaught by the connector script itself
 process.on('uncaughtException', err => {
@@ -61718,7 +61719,7 @@ Promise.prototype.any = function () {
 var core = __webpack_require__(504),
     isArray = __webpack_require__(9),
     isFunction = __webpack_require__(75),
-    isObjectLike = __webpack_require__(25);
+    isObjectLike = __webpack_require__(26);
 
 
 module.exports = function (options) {
@@ -61798,7 +61799,7 @@ module.exports = function (options) {
 
 var errors = __webpack_require__(505),
     isFunction = __webpack_require__(75),
-    isObjectLike = __webpack_require__(25),
+    isObjectLike = __webpack_require__(26),
     isString = __webpack_require__(508),
     isUndefined = __webpack_require__(509);
 
@@ -62118,7 +62119,7 @@ module.exports = objectToString;
 
 var baseGetTag = __webpack_require__(43),
     isArray = __webpack_require__(9),
-    isObjectLike = __webpack_require__(25);
+    isObjectLike = __webpack_require__(26);
 
 /** `Object#toString` result references. */
 var stringTag = '[object String]';
@@ -80850,7 +80851,7 @@ ParserFeedbackSimulator.prototype._handleEndTagToken = function (token) {
 
 var isFunction = __webpack_require__(75),
     isMasked = __webpack_require__(661),
-    isObject = __webpack_require__(24),
+    isObject = __webpack_require__(25),
     toSource = __webpack_require__(269);
 
 /**
@@ -81045,7 +81046,7 @@ module.exports = baseTimes;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseGetTag = __webpack_require__(43),
-    isObjectLike = __webpack_require__(25);
+    isObjectLike = __webpack_require__(26);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]';
@@ -81094,7 +81095,7 @@ module.exports = stubFalse;
 
 var baseGetTag = __webpack_require__(43),
     isLength = __webpack_require__(163),
-    isObjectLike = __webpack_require__(25);
+    isObjectLike = __webpack_require__(26);
 
 /** `Object#toString` result references. */
 var argsTag = '[object Arguments]',
@@ -81255,7 +81256,7 @@ module.exports = nativeKeys;
 /* 674 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(24),
+var isObject = __webpack_require__(25),
     isPrototype = __webpack_require__(119),
     nativeKeysIn = __webpack_require__(675);
 
@@ -81653,7 +81654,7 @@ var LazyWrapper = __webpack_require__(167),
     LodashWrapper = __webpack_require__(284),
     baseLodash = __webpack_require__(168),
     isArray = __webpack_require__(9),
-    isObjectLike = __webpack_require__(25),
+    isObjectLike = __webpack_require__(26),
     wrapperClone = __webpack_require__(685);
 
 /** Used for built-in method references. */
@@ -82331,7 +82332,7 @@ module.exports = toFinite;
 /* 699 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(24),
+var isObject = __webpack_require__(25),
     isSymbol = __webpack_require__(126);
 
 /** Used as references for various `Number` constants. */
@@ -84378,7 +84379,7 @@ var Stack = __webpack_require__(173),
     assignMergeValue = __webpack_require__(293),
     baseFor = __webpack_require__(288),
     baseMergeDeep = __webpack_require__(744),
-    isObject = __webpack_require__(24),
+    isObject = __webpack_require__(25),
     keysIn = __webpack_require__(122);
 
 /**
@@ -85015,7 +85016,7 @@ var assignMergeValue = __webpack_require__(293),
     isArrayLikeObject = __webpack_require__(749),
     isBuffer = __webpack_require__(164),
     isFunction = __webpack_require__(75),
-    isObject = __webpack_require__(24),
+    isObject = __webpack_require__(25),
     isPlainObject = __webpack_require__(750),
     isTypedArray = __webpack_require__(165),
     toPlainObject = __webpack_require__(751);
@@ -85215,7 +85216,7 @@ module.exports = initCloneObject;
 /***/ (function(module, exports, __webpack_require__) {
 
 var isArrayLike = __webpack_require__(49),
-    isObjectLike = __webpack_require__(25);
+    isObjectLike = __webpack_require__(26);
 
 /**
  * This method is like `_.isArrayLike` except that it also checks if `value`
@@ -85255,7 +85256,7 @@ module.exports = isArrayLikeObject;
 
 var baseGetTag = __webpack_require__(43),
     getPrototype = __webpack_require__(295),
-    isObjectLike = __webpack_require__(25);
+    isObjectLike = __webpack_require__(26);
 
 /** `Object#toString` result references. */
 var objectTag = '[object Object]';
@@ -88122,7 +88123,7 @@ module.exports = basePickBy;
 var assignValue = __webpack_require__(159),
     castPath = __webpack_require__(132),
     isIndex = __webpack_require__(86),
-    isObject = __webpack_require__(24),
+    isObject = __webpack_require__(25),
     toKey = __webpack_require__(92);
 
 /**
@@ -88362,7 +88363,7 @@ module.exports = {"name":"cheerio","version":"1.0.0-rc.2","description":"Tiny, f
 
 
 const cozy = __webpack_require__(50)
-const log = __webpack_require__(27).namespace('BaseKonnector')
+const log = __webpack_require__(24).namespace('BaseKonnector')
 const Secret = __webpack_require__(204)
 
 /**
@@ -96048,7 +96049,7 @@ var setToStringTag = __webpack_require__(70);
 var IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(26)(IteratorPrototype, __webpack_require__(11)('iterator'), function () { return this; });
+__webpack_require__(27)(IteratorPrototype, __webpack_require__(11)('iterator'), function () { return this; });
 
 module.exports = function (Constructor, NAME, next) {
   Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
@@ -97250,7 +97251,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function () {
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(26)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(27)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -98398,7 +98399,7 @@ var $iterators = __webpack_require__(193);
 var getKeys = __webpack_require__(72);
 var redefine = __webpack_require__(40);
 var global = __webpack_require__(6);
-var hide = __webpack_require__(26);
+var hide = __webpack_require__(27);
 var Iterators = __webpack_require__(71);
 var wks = __webpack_require__(11);
 var ITERATOR = wks('iterator');
@@ -99220,7 +99221,7 @@ for (var collections = getKeys(DOMIterables), i = 0; i < collections.length; i++
 
 const fs = __webpack_require__(109)
 const path = __webpack_require__(59)
-const log = __webpack_require__(27).namespace('cozy-client-js-stub')
+const log = __webpack_require__(24).namespace('cozy-client-js-stub')
 const uuid = __webpack_require__(937)
 const sha1 = __webpack_require__(939)
 const bytesToUuid = __webpack_require__(110)
@@ -99516,7 +99517,7 @@ module.exports = sha1;
 
 const fs = __webpack_require__(109)
 const path = __webpack_require__(59)
-const log = __webpack_require__(27)
+const log = __webpack_require__(24)
 
 module.exports = getKonnectorConfig
 
@@ -99579,10 +99580,11 @@ module.exports = (entries, fields, options = {}) => {
     return entry
   }
 
+  const originalEntries = entries
   return saveFiles(entries, fields, options)
     .then(entries => filterData(entries, DOCTYPE, options))
     .then(entries => addData(entries, DOCTYPE, options))
-    .then(entries => linkBankOperations(entries, DOCTYPE, fields, options))
+    .then(entries => linkBankOperations(originalEntries, DOCTYPE, fields, options))
 }
 
 
@@ -100152,7 +100154,7 @@ module.exports = {getBillDate, getBillAmount, getIdentifiers, getDateRange, getA
  * @module updateOrCreate
  */
 const bluebird = __webpack_require__(42)
-const log = __webpack_require__(27).namespace('updateOrCreate')
+const log = __webpack_require__(24).namespace('updateOrCreate')
 const cozy = __webpack_require__(50)
 
 module.exports = (entries = [], doctype, matchingAttributes = []) => {
