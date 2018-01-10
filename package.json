@@ -10,7 +10,7 @@
   "author": "",
   "license": "AGPL-3.0",
   "dependencies": {
-    "cozy-konnector-libs": "^3.0.8"
+    "cozy-konnector-libs": "3.1.0"
   },
   "scripts": {
     "dev": "cozy-konnector-dev",
@@ -22,8 +22,8 @@
     "deploy": "git-directory-deploy --directory build/ --branch build --repo=https://github.com/cozy/cozy-konnector-trainline.git"
   },
   "devDependencies": {
-    "copy-webpack-plugin": "^4.0.1",
-    "git-directory-deploy": "^1.5.1",
-    "webpack": "^3.1.0"
+    "copy-webpack-plugin": "4.3.1",
+    "git-directory-deploy": "1.5.1",
+    "webpack": "3.10.0"
   }
 }
