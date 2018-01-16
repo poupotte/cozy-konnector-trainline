@@ -210,6 +210,7 @@ function fetchBills (data) {
     // system.
     for (const system of systems) {
       const bill = {
+        originId: proof.id,
         pdfurl: proof.url,
         type: 'train',
         vendor: 'Trainline',
@@ -272,7 +273,7 @@ function fetchBills (data) {
         date: bill.date.toDate(),
         type: 'transport',
         vendor: 'Trainline',
-        filename: getFileName(bill.date)
+        filename: getFileName(bill)
       }
       if (typeof bill.isRefund !== 'undefined') {
         newBill.isRefund = bill.isRefund
@@ -286,6 +287,6 @@ function fetchBills (data) {
   return filteredBills
 }
 
-function getFileName (date) {
-  return `${date.format('YYYY_MM')}_Trainline.pdf`
+function getFileName (bill) {
+  return `${bill.date.format('YYYY_MM_DD')}_${bill.originId.substr(0, 4)}_Trainline.pdf`
 }
