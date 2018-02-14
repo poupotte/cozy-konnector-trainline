@@ -12,7 +12,8 @@ module.exports = {
     new CopyPlugin([
       { from: 'manifest.konnector' },
       { from: 'package.json' },
-      { from: 'LICENSE' }
+      { from: 'LICENSE' },
+      { from: 'assets' }
     ])
   ]
 }

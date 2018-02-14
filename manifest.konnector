@@ -3,20 +3,51 @@
   "name": "Trainline",
   "type": "node",
   "slug": "konnector-trainline",
-  "source": "git://github.com/cozy/cozy-konnector-trainline.git",
-  "langs": ["fr, en"],
+  "source": "git://github.com/cozy/cozy-konnector-trainline.git#build",
   "editor": "Cozy",
+  "vendorLink": "www.trainline.fr",
+  "categories": ["transport"],
   "fields": {
-    "save_folder": {
-      "doctype": "io.cozy.files",
-      "type": "folder"
+    "login": {
+      "type": "text"
     },
-    "account": {
-      "doctype": "io.cozy.accounts",
-      "account_type": "trainline",
-      "accountFormat": "login,password"
+    "password": {
+      "type": "password"
+    },
+    "advancedFields": {
+      "folderPath": {
+        "advanced": true,
+        "isRequired": false
+      }
     }
   },
+  "dataType": [
+    "bill"
+  ],
+  "permissions": {
+    "bank operations": {
+      "description": "Required to link bills to bank operations",
+      "type": "io.cozy.bank.operations"
+    },
+    "bills": {
+      "description": "Required to save the bills data",
+      "type": "io.cozy.bills"
+    },
+    "files": {
+      "description": "Required to save the bills",
+      "type": "io.cozy.files"
+    },
+    "accounts": {
+      "description": "Required to get the account's data",
+      "type": "io.cozy.accounts",
+      "verbs": ["GET"]
+    }
+  },
+  "developer": {
+    "name": "Cozy",
+    "url": "https://cozy.io"
+  },
+  "langs": ["fr", "en"],
   "locales": {
     "fr": {
       "description": "Récupère toutes vos factures Trainline",
@@ -52,28 +83,5 @@
         }
       }
     }
-  },
-  "permissions": {
-    "bank operations": {
-      "description": "Required to link bills to bank operations",
-      "type": "io.cozy.bank.operations"
-    },
-    "bills": {
-      "description": "Required to save the bills data",
-      "type": "io.cozy.bills"
-    },
-    "files": {
-      "description": "Required to save the bills",
-      "type": "io.cozy.files"
-    },
-    "accounts": {
-      "description": "Required to get the account's data",
-      "type": "io.cozy.accounts",
-      "verbs": ["GET"]
-    }
-  },
-  "developer": {
-    "name": "Cozy",
-    "url": "https://cozy.io"
   }
 }
