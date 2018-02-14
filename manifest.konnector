@@ -1,9 +1,11 @@
 {
-  "version": "3.0.0",
+  "version": "0.1.0",
   "name": "Trainline",
   "type": "node",
-  "slug": "trainline",
+  "slug": "konnector-trainline",
   "source": "git://github.com/cozy/cozy-konnector-trainline.git",
+  "langs": ["fr, en"],
+  "editor": "Cozy",
   "fields": {
     "save_folder": {
       "doctype": "io.cozy.files",
@@ -17,13 +19,36 @@
   },
   "locales": {
     "fr": {
-      "description": "Récupère toutes vos factures",
+      "description": "Récupère toutes vos factures Trainline",
       "permissions": {
+        "bank operations": {
+          "description": "Utilisé pour lier vos factures à vos opérations banquaires"
+        },
         "bills": {
           "description": "Utilisé pour sauvegarder les données de facturation"
         },
         "files": {
           "description": "Utilisé pour sauvegarder les factures"
+        },
+        "accounts": {
+          "description": "Utilisé pour obtenir les données du compte"
+        }
+      }
+    },
+    "en": {
+      "description": "Fetch all your trainline bills",
+      "permissions": {
+        "bank operations": {
+          "description": "Required to link bills to bank operations"
+        },
+        "bills": {
+          "description": "Required to save the bills data"
+        },
+        "files": {
+          "description": "Required to save the bills"
+        },
+        "accounts": {
+          "description": "Required to get the account's data"
         }
       }
     }
@@ -48,7 +73,7 @@
     }
   },
   "developer": {
-    "name": "Your name or organization",
-    "url": "http://your-homepage-here.org"
+    "name": "Cozy",
+    "url": "https://cozy.io"
   }
 }
