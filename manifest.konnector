@@ -4,7 +4,7 @@
   "type": "node",
   "slug": "konnector-trainline",
   "source": "git://github.com/cozy/cozy-konnector-trainline.git",
-  "langs": ["fr, en"],
+  "langs": ["fr", "en"],
   "editor": "Cozy",
   "fields": {
     "save_folder": {
