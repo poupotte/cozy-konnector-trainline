@@ -1,33 +1,29 @@
 {
-  "version": "3.0.0",
+  "version": "0.1.0",
   "name": "Trainline",
   "type": "node",
-  "slug": "trainline",
-  "source": "git://github.com/cozy/cozy-konnector-trainline.git",
+  "slug": "konnector-trainline",
+  "source": "git://github.com/cozy/cozy-konnector-trainline.git#build",
+  "editor": "Cozy",
+  "vendorLink": "www.trainline.fr",
+  "categories": ["transport"],
   "fields": {
-    "save_folder": {
-      "doctype": "io.cozy.files",
-      "type": "folder"
+    "login": {
+      "type": "text"
     },
-    "account": {
-      "doctype": "io.cozy.accounts",
-      "account_type": "trainline",
-      "accountFormat": "login,password"
-    }
-  },
-  "locales": {
-    "fr": {
-      "description": "Récupère toutes vos factures",
-      "permissions": {
-        "bills": {
-          "description": "Utilisé pour sauvegarder les données de facturation"
-        },
-        "files": {
-          "description": "Utilisé pour sauvegarder les factures"
-        }
+    "password": {
+      "type": "password"
+    },
+    "advancedFields": {
+      "folderPath": {
+        "advanced": true,
+        "isRequired": false
       }
     }
   },
+  "dataType": [
+    "bill"
+  ],
   "permissions": {
     "bank operations": {
       "description": "Required to link bills to bank operations",
@@ -48,7 +44,44 @@
     }
   },
   "developer": {
-    "name": "Your name or organization",
-    "url": "http://your-homepage-here.org"
+    "name": "Cozy",
+    "url": "https://cozy.io"
+  },
+  "langs": ["fr", "en"],
+  "locales": {
+    "fr": {
+      "description": "Récupère toutes vos factures Trainline",
+      "permissions": {
+        "bank operations": {
+          "description": "Utilisé pour lier vos factures à vos opérations banquaires"
+        },
+        "bills": {
+          "description": "Utilisé pour sauvegarder les données de facturation"
+        },
+        "files": {
+          "description": "Utilisé pour sauvegarder les factures"
+        },
+        "accounts": {
+          "description": "Utilisé pour obtenir les données du compte"
+        }
+      }
+    },
+    "en": {
+      "description": "Fetch all your trainline bills",
+      "permissions": {
+        "bank operations": {
+          "description": "Required to link bills to bank operations"
+        },
+        "bills": {
+          "description": "Required to save the bills data"
+        },
+        "files": {
+          "description": "Required to save the bills"
+        },
+        "accounts": {
+          "description": "Required to get the account's data"
+        }
+      }
+    }
   }
 }
