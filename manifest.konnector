@@ -1,7 +1,8 @@
 {
   "version": "0.1.0",
   "name": "Trainline",
-  "type": "node",
+  "type": "konnector",
+  "language": "node",
   "slug": "konnector-trainline",
   "source": "git://github.com/cozy/cozy-konnector-trainline.git#build",
   "editor": "Cozy",
