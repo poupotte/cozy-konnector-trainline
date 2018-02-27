@@ -3,6 +3,7 @@
   "name": "Trainline",
   "type": "konnector",
   "language": "node",
+  "icon": "icon.svg",
   "slug": "konnector-trainline",
   "source": "git://github.com/cozy/cozy-konnector-trainline.git#build",
   "editor": "Cozy",
@@ -51,7 +52,8 @@
   "langs": ["fr", "en"],
   "locales": {
     "fr": {
-      "description": "Récupère toutes vos factures Trainline",
+      "short_description": "Récupérer vos données Trainline dans votre Cozy",
+      "long_description": "Ce fournisseur vous permettra de récupérer l'ensemble de vos factures Trainline dans votre Cozy.",
       "permissions": {
         "bank operations": {
           "description": "Utilisé pour lier vos factures à vos opérations banquaires"
@@ -68,7 +70,8 @@
       }
     },
     "en": {
-      "description": "Fetch all your trainline bills",
+      "short_description": "Fetch your Trainline data in your Cozy",
+      "long_description": "This provider will allow you to fetch all your Trainline bills in your Cozy.",
       "permissions": {
         "bank operations": {
           "description": "Required to link bills to bank operations"
