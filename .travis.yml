@@ -17,6 +17,7 @@ addons:
     packages:
     - g++-4.8
     - python3.5
+    - pngquant
 cache:
   yarn: true
   directories:
@@ -24,4 +25,5 @@ cache:
 script:
 - yarn build
 after_success:
+- test $TRAVIS_BRANCH = "master" && pngquant build/screenshots/* -f --ext ".png"
 - test $TRAVIS_BRANCH = "master" && yarn run deploy:travis -- --branch=build
