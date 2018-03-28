@@ -9,7 +9,6 @@
   "editor": "Cozy",
   "vendorLink": "www.trainline.fr",
   "categories": ["transport"],
-  "screenshots": ["screenshots/screenshot.png"],
   "fields": {
     "login": {
       "type": "text"
