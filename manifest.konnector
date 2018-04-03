@@ -4,11 +4,12 @@
   "type": "konnector",
   "language": "node",
   "icon": "icon.svg",
-  "slug": "konnector-trainline",
+  "slug": "trainline-collect",
   "source": "git://github.com/cozy/cozy-konnector-trainline.git#build",
   "editor": "Cozy",
   "vendorLink": "www.trainline.fr",
   "categories": ["transport"],
+  "screenshots": ["screenshots/screenshot.png"],
   "fields": {
     "login": {
       "type": "text"
