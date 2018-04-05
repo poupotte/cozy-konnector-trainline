@@ -26,4 +26,16 @@ script:
 - yarn build
 after_success:
 - test $TRAVIS_BRANCH = "master" && pngquant build/screenshots/* -f --ext ".png"
-- test $TRAVIS_BRANCH = "master" && yarn run deploy:travis -- --branch=build
+deploy:
+  - provider: script
+    repo: konnectors/cozy-konnector-trainline
+    skip-cleanup: true
+    script: yarn deploy
+    on:
+      branch: master
+  - provider: script
+    repo: konnectors/cozy-konnector-trainline
+    skip-cleanup: true
+    script: DEPLOY_BRANCH=latest yarn deploy
+    on:
+      branch: prod
