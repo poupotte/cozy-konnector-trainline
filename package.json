@@ -10,9 +10,6 @@
   "author": "",
   "license": "AGPL-3.0",
   "main": "./src/index.js",
-  "dependencies": {
-    "cozy-konnector-libs": "3.7.4"
-  },
   "eslintConfig": {
     "extends": [
       "eslint-config-cozy-app"
@@ -22,19 +19,21 @@
     "build"
   ],
   "scripts": {
-    "dev": "cozy-konnector-dev",
-    "standalone": "cozy-konnector-standalone",
-    "standalone:record": "REPLAY=record cozy-konnector-standalone",
-    "standalone:replay": "REPLAY=replay cozy-konnector-standalone",
+    "dev": "cozy-run-dev",
+    "standalone": "cozy-run-standalone",
     "build": "webpack",
     "precommit": "eslint .",
     "lint": "eslint --fix .",
     "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozy/cozy-konnector-trainline.git}",
     "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN"
   },
+  "dependencies": {
+    "cozy-konnector-libs": "3.8.1"
+  },
   "devDependencies": {
     "copy-webpack-plugin": "4.5.1",
     "cozy-app-publish": "0.3.0",
+    "cozy-jobs-cli": "1.0.8",
     "eslint": "4.19.1",
     "eslint-config-cozy-app": "0.5.1",
     "git-directory-deploy": "1.5.1",
