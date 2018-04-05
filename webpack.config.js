@@ -13,8 +13,7 @@ module.exports = {
       { from: 'manifest.konnector' },
       { from: 'package.json' },
       { from: 'LICENSE' },
-      { from: 'assets' },
-      { from: '.travis.yml' }
+      { from: 'assets' }
     ])
   ]
 }
