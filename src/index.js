@@ -1,6 +1,12 @@
 'use strict'
 
-const {log, BaseKonnector, saveBills, request, retry} = require('cozy-konnector-libs')
+const {
+  log,
+  BaseKonnector,
+  saveBills,
+  request,
+  retry
+} = require('cozy-konnector-libs')
 const moment = require('moment')
 let rq = request({
   // debug: true
@@ -8,22 +14,26 @@ let rq = request({
 
 // The goal of this connector is to fetch bills from the
 // service trainline.fr
-module.exports = new BaseKonnector(function fetch (fields) {
+module.exports = new BaseKonnector(function fetch(fields) {
   return login(fields)
-  .then(data => retry(fetchBills, {
-    interval: 3000,
-    throw_original: true,
-    args: [data]
-  }))
-  .then(entries => saveBills(entries, fields.folderPath, {
-    timeout: Date.now() + 60 * 1000,
-    identifiers: 'trainline'
-  }))
+    .then(data =>
+      retry(fetchBills, {
+        interval: 3000,
+        throw_original: true,
+        args: [data]
+      })
+    )
+    .then(entries =>
+      saveBills(entries, fields.folderPath, {
+        timeout: Date.now() + 60 * 1000,
+        identifiers: 'trainline'
+      })
+    )
 })
 
 const baseUrl = 'https://www.trainline.eu/'
 
-function login (fields) {
+function login(fields) {
   // Signin form
   const signinForm = {
     concur_auth_code: null,
@@ -47,8 +57,7 @@ function login (fields) {
     form: signinForm,
     resolveWithFullResponse: true,
     simple: false
-  })
-  .then(res => {
+  }).then(res => {
     log('info', 'Connected')
 
     if (res.statusCode === 422) {
@@ -65,8 +74,7 @@ function login (fields) {
 
     // the api/v5_1/pnrs uri gives all information necessary to get bill
     // information
-    return rq(`${baseUrl}api/v5_1/pnrs`)
-    .then(body => {
+    return rq(`${baseUrl}api/v5_1/pnrs`).then(body => {
       const data = {}
       // We check there are bills
       if (body.proofs && body.proofs.length > 0) {
@@ -79,7 +87,7 @@ function login (fields) {
   })
 }
 
-function computeNextDate (pnrs) {
+function computeNextDate(pnrs) {
   // To get new bills, it is necessary to get api/v5_1/pnrs?date=YYYY-MM-DD
   // This function computes the date YYYY-MM-DD
   // YYYY-MM-DD :
@@ -89,15 +97,17 @@ function computeNextDate (pnrs) {
 
   // Indentify the minimum date in the pnr list
   const minDate = pnrs.reduce(
-    (min, pnr) => Math.min(+min, +new Date(pnr.sort_date)), Infinity
+    (min, pnr) => Math.min(+min, +new Date(pnr.sort_date)),
+    Infinity
   )
-  return moment(minDate).subtract(1, 'month').set('date', 1)
-                        .format('YYYY-MM-DD')
+  return moment(minDate)
+    .subtract(1, 'month')
+    .set('date', 1)
+    .format('YYYY-MM-DD')
 }
 
-function getNextMetaData (startdate, data) {
-  return rq(`${baseUrl}api/v5_1/pnrs?date=${startdate}`)
-  .then(body => {
+function getNextMetaData(startdate, data) {
+  return rq(`${baseUrl}api/v5_1/pnrs?date=${startdate}`).then(body => {
     if (body.proofs && body.proofs.length > 0) {
       saveMetadata(data, body)
       return getNextMetaData(computeNextDate(body.pnrs), data)
@@ -107,7 +117,7 @@ function getNextMetaData (startdate, data) {
   })
 }
 
-function saveMetadata (data, body) {
+function saveMetadata(data, body) {
   // Body structure received for api/v5_1/pnrs (with or without date parameter)
   //
   // body.pnrs (table of pnr):
@@ -152,7 +162,7 @@ function saveMetadata (data, body) {
   data.after_sales_logs = data.after_sales_logs.concat(body.after_sales_logs)
 }
 
-function fetchBills (data) {
+function fetchBills(data) {
   const bills = []
   // List of already managed proofs
   const managedProofId = []
@@ -179,18 +189,19 @@ function fetchBills (data) {
     let linkedPNR = [data.pnrs.find(pnr => pnr.id === proof.pnr_id)]
     try {
       linkedPNR = data.pnrs.filter(
-        pnr => pnr.proof_ids instanceof Array && pnr.proof_ids.indexOf(proof.id) !== -1
+        pnr =>
+          pnr.proof_ids instanceof Array &&
+          pnr.proof_ids.indexOf(proof.id) !== -1
       )
     } catch (e) {
       // We do nothing with the error as linkedPNR is set anyway.
-      log('warning', 'linkedPNR')
-      console.log(e, 'linkedPNR error')
+      log('warning', 'linkedPNR error')
       log('warning', e)
     }
 
     // For some unknown reason, some users don't have system set for the pnr.
     // By default we set it to sncf
-    linkedPNR = linkedPNR.map((pnr) => {
+    linkedPNR = linkedPNR.map(pnr => {
       if (typeof pnr.system === 'undefined') {
         pnr.system = 'sncf'
       }
@@ -215,35 +226,40 @@ function fetchBills (data) {
         type: 'train',
         vendor: 'Trainline',
         system,
-        date: moment(proof.created_at).hours(0)
-                                      .minutes(0)
-                                      .seconds(0)
-                                      .milliseconds(0)
+        date: moment(proof.created_at)
+          .hours(0)
+          .minutes(0)
+          .seconds(0)
+          .milliseconds(0)
       }
 
       // Get the list of refunds for the current bill
       let refundID = []
-      refundID = linkedPNR.filter(pnr => pnr.system === system).reduce(
-        (list, pnr) => list.concat(pnr.after_sales_log_ids), []
-      )
+      refundID = linkedPNR
+        .filter(pnr => pnr.system === system)
+        .reduce((list, pnr) => list.concat(pnr.after_sales_log_ids), [])
       let listRefund = []
-      listRefund = refundID.reduce((list, id) => list.concat(
-        data.after_sales_logs.find(asl => asl.id === id)), []
+      listRefund = refundID.reduce(
+        (list, id) =>
+          list.concat(data.after_sales_logs.find(asl => asl.id === id)),
+        []
       )
 
       if (proof.type === 'purchase') {
         // Compute the sum of refunds for the current bill
         const reinboursedAmount = listRefund.reduce(
-          (sum, rb) => sum - rb.added_cents + rb.refunded_cents, 0
+          (sum, rb) => sum - rb.added_cents + rb.refunded_cents,
+          0
         )
         // We compute the amount of not reimbursed trips.
-        const paidAmount =
-          linkedPNR.filter(pnr => pnr.system === system).reduce(
-            (sum, p) => sum + p.cents, 0
-          )
+        const paidAmount = linkedPNR
+          .filter(pnr => pnr.system === system)
+          .reduce((sum, p) => sum + p.cents, 0)
         // Get the the sum of penalties
         const penaltiesAmount = listRefund.reduce(
-          (sum, rb) => sum + rb.penalty_cents, 0)
+          (sum, rb) => sum + rb.penalty_cents,
+          0
+        )
         bill.amount = (paidAmount + reinboursedAmount + penaltiesAmount) / 100
       } else {
         // Find the unique Refund based on the emission date
@@ -262,13 +278,15 @@ function fetchBills (data) {
   // Recombine the bill list so that each entry.url is unique
   for (const bill of bills) {
     // Ensure the bill is not already in the list.
-    const sameUrlBills = filteredBills.filter(b =>
-        (b.pdfurl === bill.pdfurl && b.system === bill.system))
+    const sameUrlBills = filteredBills.filter(
+      b => b.pdfurl === bill.pdfurl && b.system === bill.system
+    )
     if (sameUrlBills.length === 0) {
-      const sameBill = bills.filter(b => (b.pdfurl === bill.pdfurl))
-                            .filter(b => (b.system === bill.system))
+      const sameBill = bills
+        .filter(b => b.pdfurl === bill.pdfurl)
+        .filter(b => b.system === bill.system)
       const newBill = {
-        amount: sameBill.reduce((amount, b) => (amount + b.amount), 0),
+        amount: sameBill.reduce((amount, b) => amount + b.amount, 0),
         fileurl: bill.pdfurl,
         date: bill.date.toDate(),
         type: 'transport',
@@ -282,11 +300,14 @@ function fetchBills (data) {
     }
   }
 
-  filteredBills.sort((a, b) => a.date < b.date ? 1 : -1)
+  filteredBills.sort((a, b) => (a.date < b.date ? 1 : -1))
 
   return filteredBills
 }
 
-function getFileName (bill) {
-  return `${bill.date.format('YYYY_MM_DD')}_${bill.originId.substr(0, 4)}_Trainline.pdf`
+function getFileName(bill) {
+  return `${bill.date.format('YYYY_MM_DD')}_${bill.originId.substr(
+    0,
+    4
+  )}_Trainline.pdf`
 }
