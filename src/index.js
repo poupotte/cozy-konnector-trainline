@@ -63,6 +63,8 @@ function login(fields) {
     if (res.statusCode === 422) {
       throw new Error('LOGIN_FAILED')
     }
+    log('info', 'Successfully logged in.')
+
     // Retrieve token
     const token = res.body.meta.token
 

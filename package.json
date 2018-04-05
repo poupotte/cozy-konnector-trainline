@@ -24,6 +24,7 @@
     "build": "webpack",
     "precommit": "eslint .",
     "lint": "eslint --fix .",
+    "test": "konitor testit .",
     "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/cozy/cozy-konnector-trainline.git}",
     "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN"
   },
@@ -38,6 +39,7 @@
     "eslint-config-cozy-app": "0.5.1",
     "git-directory-deploy": "1.5.1",
     "husky": "0.14.3",
+    "konitor": "0.6.0",
     "webpack": "4.3.0",
     "webpack-cli": "2.0.13"
   }
