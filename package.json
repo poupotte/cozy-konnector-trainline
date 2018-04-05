@@ -4,7 +4,7 @@
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cozy/cozy-konnector-trainline.git"
+    "url": "git+https://github.com/konnectors/cozy-konnector-trainline.git"
   },
   "keywords": [],
   "author": "",
@@ -18,8 +18,8 @@
     "standalone:record": "REPLAY=record cozy-konnector-standalone",
     "standalone:replay": "REPLAY=replay cozy-konnector-standalone",
     "build": "webpack",
-    "deploy:travis": "git-directory-deploy --username Cozy --email contact@cozycloud.cc --directory build/ --branch=build --repo=https://$GITHUB_TOKEN@github.com/cozy/cozy-konnector-trainline.git",
-    "deploy": "git-directory-deploy --directory build/ --branch build --repo=https://github.com/cozy/cozy-konnector-trainline.git"
+    "deploy:travis": "git-directory-deploy --username Cozy --email contact@cozycloud.cc --directory build/ --branch=build --repo=https://$GITHUB_TOKEN@github.com/konnectors/cozy-konnector-trainline.git",
+    "deploy": "git-directory-deploy --directory build/ --branch build --repo=https://github.com/konnectors/cozy-konnector-trainline.git"
   },
   "devDependencies": {
     "copy-webpack-plugin": "4.5.1",
