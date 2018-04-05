@@ -1,37 +1,30 @@
 language: node_js
-matrix:
-  fast_finish: true
 node_js:
-- '8'
+  - '8'
 env:
   global:
-  - CXX=g++-4.8
-  - secure: EaUy9WNQWQqRQPx+sNAXmSXIYm+CHiaysTjem89I/u9Fdk/1Ww5hrWvu88zNsEsn4iH84gyomRj852xiZVt+ETz1dJHRgJwkOET3DRLRGQdd8xzAEUoQ62d+7x/SXvcCTzQR3YGTbNvvRByXqF0i9YAy7awVff060JhQEn3hZmWtQTWoPX8Zqu7G3HhlI3YUw8rF6hKey4mLWLdCUr4UzQ4HXsKQfACrCK4CkEtonbsW5InJ4Bw8F1nffJBuAJPvDH0ZhyJG8vUXYjBxsq6MtJfRLIgGrUIdZEz8HRirTm/G/usiHnf0TJkX3eSwM2mOdKkgP+hGoFXGQtGZhsMdDT4UOTHmsE/9VUknqR+71IMFFV4GpfkqyVOrN/qsfM2cui6cyBfZskmOJ2VQckgNEF8YrY8StnPIO3bsadeH7byBD6CCiU0LYEaFuyjNUOgloh+bSI5euYyjsTGB7voFwJUhcyBg0knM8W0JAp6b0Fx4lq5GXjx2q4fDg6oTQkDcxk38wz6auGc/8wDLSi+mNkwkQbjEDeLXvFe92g+exzlfN64CFToKnci3Sx/4h1YT4GCwfia/++Hp4m5DSW9cSFanjDTAY2v29rLzZFP3XP5zuiKPrCQYIaEa7NN04WQpaMcac0iyWV5sOIPs6QJZCTpeO2w+KhxsRxJSDjHUX9k=
-script:
-  - yarn
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    - deadsnakes
-    packages:
-    - g++-4.8
-    - python3.5
-    - pngquant
+    # kosssi GITHUB_TOKEN
+    # to generate yours : travis encrypt GITHUB_TOKEN=<your_GITHUB_TOKEN> -r konnectors/cozy-konnector-trainline
+    - secure: "jHhacVE25GoA8LbI29IXSF4dZNtpORQ5dgivVz3vnrd0mVlNFZHNd8Ny7CqR6ma9k90Xnsxa76jwDhb062y7EtQygUeQcryh/7rj2VGWFV77x5s/ldGLjlfFjhdmo8FTdctiHS21Q9xubBISWRSlQjVcrYCIKzqc5BAoaYUNIFo5pUkYjon2wPxUJr8G68PWEJeCqG5gnpzElXSoluW5MSPV9hQ8GgK8lYLztwoI+Ptmtye0PwiKxmgVlLNA+YJY1Fu6to3RKMvEqRdeB+BpaKVB8LuRlOjxrTuXaLwykF6yIWTqf+n7htlKpPp9WF3a8tfqeb2KCx/Au0/AfqMpLs6HIjH3RSWliiAogII3to0njG8B7+XqMAOYhhpYQLH/MdJ0PUmhixZ7tFo2EiikZ//hgd3xs80oCNk2aXMUhkhBzU/JSQKTtPQ83k7Zgs+CYDtOX0NBeWBAsON1KlcdIdE5+ofQpmRmYGGH8BMI+LDdHRngxcPDqnWITQu7wbp9akCGYDG3izjlG2haHU9zZ651uBhK2AMQEW20X74YlLtMJJL3b+KGu2OFQ0Vdbcit30s/YnSJc050gaEIySZyOU8VcOb0kyo7JWDZTD7cny5KeAkB0pnb45nDLJ7mUg6FbLkp5JWmDf2TBd0DFmZcT7AO6mUM9epwh7zuX1ebi28="
+    # REGISTRY_TOKEN
+    # to generate : travis encrypt REGISTRY_TOKEN=<your_REGISTRY_TOKEN> -r konnectors/cozy-konnector-trainline
+    - secure: "C2Ko8x9bVZhqIiYWqkJHxwsodRwvj5TZpYNP6BMfFffCFcuNBDm9e7kdgVuhfSU6DdmTx74OtoUPrw6MZnmJXYgQwMsTopGTLMsgIACHR/9/oGn3qenbPHwYjDLlP44EQHut74Io/xudbVkHGelk0RrxjcYkChGpXnH8CIpZtDhN9mdZ0Ii0TyGLyEhzG+jA/6rLZfv1mQqggiQn43LY4hWIw9lcA6PIkwCDblNCjeKairIdnafJsXuB26unsKqJiiwbVxCJClLhp9DZvN6UfiNH83nzTj9bz/v+pjSYMsIC8deOFejOL2ivhSZXIc77CjkUeopLN0yrxpagLycxakVUhbzaiyynesOQHf+sySpin5pq3KglefLOEy5vEn2EgJNiYiVTnrHwUYwyzQOvVWhsZT5ET0FVjfteIs4ZCsgbFSU+C7xZb3sOB7MwkVLVUeDqBGx9SdPLe/Cv/vSM4RXUlb98GhR9ng2n880F8GJ7iEPDxLNBE98ocOWZ9tiO2C+/3K3DAlaBIka21L0/1wYC0Rjq+QCTctkJDIZYXx9/sDM3WJK2pEf/fQ9iEF0FeuXncoBzI1ybNA1b7gFEgihisHFaYfrisPx+ChHdYVz1Lq0FBBsKLSgtD305mK5OhEoa5dR5TXUIXfb4yGggLmmLNU4Z73s+WGooKYJkcrQ="
 cache:
   yarn: true
   directories:
-  - node_modules
+    - node_modules
+script:
+  - yarn build
 deploy:
-- provider: script
-  repo: konnectors/cozy-konnector-trainline
-  skip-cleanup: true
-  script: yarn build && pngquant build/screenshots/* -f --ext ".png" && yarn run deploy:travis
-  on:
-    branch: master
-- provider: script
-  repo: konnectors/cozy-konnector-trainline
-  skip-cleanup: true
-  script: yarn add cozy-app-publish && yarn cozy-app-publish --token $REGISTRY_TOKEN --build-dir '.'
-  on:
-    branch: build
+  - provider: script
+    repo: konnectors/cozy-konnector-trainline
+    skip-cleanup: true
+    script: yarn deploy && TRAVIS_COMMIT=$(git rev-parse build) yarn cozyPublish
+    on:
+      branch: master
+  - provider: script
+    repo: konnectors/cozy-konnector-trainline
+    skip-cleanup: true
+    script: DEPLOY_BRANCH=latest yarn deploy && TRAVIS_COMMIT=$(git rev-parse latest) yarn cozyPublish
+    on:
+      branch: prod

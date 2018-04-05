@@ -2,7 +2,7 @@ var path = require('path')
 const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
-  entry: './index.js',
+  entry: require('./package.json').main,
   target: 'node',
   output: {
     path: path.join(__dirname, 'build'),
@@ -13,8 +13,7 @@ module.exports = {
       { from: 'manifest.konnector' },
       { from: 'package.json' },
       { from: 'LICENSE' },
-      { from: 'assets' },
-      { from: '.travis.yml' }
+      { from: 'assets' }
     ])
   ]
 }

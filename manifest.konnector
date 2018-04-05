@@ -5,7 +5,7 @@
   "language": "node",
   "icon": "icon.svg",
   "slug": "trainline-collect",
-  "source": "git://github.com/cozy/cozy-konnector-trainline.git#build",
+  "source": "git://github.com/konnectors/cozy-konnector-trainline.git#build",
   "editor": "Cozy",
   "vendorLink": "www.trainline.fr",
   "categories": ["transport"],
