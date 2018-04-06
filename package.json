@@ -29,7 +29,7 @@
     "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN"
   },
   "dependencies": {
-    "cozy-konnector-libs": "3.8.1"
+    "cozy-konnector-libs": "3.7.4"
   },
   "devDependencies": {
     "copy-webpack-plugin": "4.5.1",
