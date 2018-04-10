@@ -26,7 +26,7 @@
     "lint": "eslint --fix .",
     "test": "konitor testit .",
     "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/konnectors/cozy-konnector-trainline.git}",
-    "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN --build-commit $BUILD_COMMIT"
+    "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN"
   },
   "dependencies": {
     "cozy-konnector-libs": "3.7.4"
