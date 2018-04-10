@@ -26,14 +26,14 @@
     "lint": "eslint --fix .",
     "test": "konitor testit .",
     "deploy": "git-directory-deploy --directory build/ --branch ${DEPLOY_BRANCH:-build} --repo=${DEPLOY_REPOSITORY:-https://$GITHUB_TOKEN@github.com/konnectors/cozy-konnector-trainline.git}",
-    "cozyPublish": "cozy-app-publish --token ${REGISTRY_TOKEN} --build-commit ${BUILD_COMMIT}"
+    "cozyPublish": "cozy-app-publish --token $REGISTRY_TOKEN"
   },
   "dependencies": {
     "cozy-konnector-libs": "3.7.4"
   },
   "devDependencies": {
     "copy-webpack-plugin": "4.5.1",
-    "cozy-app-publish": "0.3.3",
+    "cozy-app-publish": "0.3.1",
     "cozy-jobs-cli": "1.0.8",
     "eslint": "4.19.1",
     "eslint-config-cozy-app": "0.5.1",
