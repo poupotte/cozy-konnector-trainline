@@ -1,24 +1,15 @@
 {
-  "version": "1.0.0",
-  "name": "MGEN",
-  "slug": "mgen-collect",
+  "version": "0.1.0",
+  "name": "Trainline",
   "type": "konnector",
   "language": "node",
   "icon": "icon.svg",
-  "source": "git@github.com:konnectors/cozy-konnector-mgen.git",
+  "slug": "trainline-collect",
+  "source": "git://github.com/konnectors/cozy-konnector-trainline.git#build",
   "editor": "Cozy",
-  "vendorLink": "https://www.mgen.fr",
-  "developer": {
-    "name": "cozy",
-    "url": "https://cozy.io"
-  },
-  "categories": ["insurance"],
+  "vendorLink": "www.trainline.fr",
+  "categories": ["transport"],
   "screenshots": ["screenshots/screenshot.png"],
-  "langs": ["fr"],
-  "dataType": [
-    "bill",
-    "certificate"
-  ],
   "fields": {
     "login": {
       "type": "text"
@@ -33,14 +24,9 @@
       }
     }
   },
-  "locales": {
-    "fr": {
-      "short_description": "Récupère toutes vos factures MGEN"
-    },
-    "en": {
-      "short_description": "Retrieves all your MGEN invoices"
-    }
-  },
+  "dataType": [
+    "bill"
+  ],
   "permissions": {
     "bank operations": {
       "description": "Required to link bills to bank operations",
@@ -58,6 +44,49 @@
       "description": "Required to get the account's data",
       "type": "io.cozy.accounts",
       "verbs": ["GET"]
+    }
+  },
+  "developer": {
+    "name": "Cozy",
+    "url": "https://cozy.io"
+  },
+  "langs": ["fr", "en"],
+  "locales": {
+    "fr": {
+      "short_description": "Récupérer vos données Trainline dans votre Cozy",
+      "long_description": "Ce fournisseur vous permettra de récupérer l'ensemble de vos factures Trainline dans votre Cozy.",
+      "permissions": {
+        "bank operations": {
+          "description": "Utilisé pour lier vos factures à vos opérations banquaires"
+        },
+        "bills": {
+          "description": "Utilisé pour sauvegarder les données de facturation"
+        },
+        "files": {
+          "description": "Utilisé pour sauvegarder les factures"
+        },
+        "accounts": {
+          "description": "Utilisé pour obtenir les données du compte"
+        }
+      }
+    },
+    "en": {
+      "short_description": "Fetch your Trainline data in your Cozy",
+      "long_description": "This provider will allow you to fetch all your Trainline bills in your Cozy.",
+      "permissions": {
+        "bank operations": {
+          "description": "Required to link bills to bank operations"
+        },
+        "bills": {
+          "description": "Required to save the bills data"
+        },
+        "files": {
+          "description": "Required to save the bills"
+        },
+        "accounts": {
+          "description": "Required to get the account's data"
+        }
+      }
     }
   }
 }
