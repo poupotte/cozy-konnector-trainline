@@ -24,7 +24,7 @@
       }
     }
   },
-  "data_type": [
+  "data_types": [
     "bill"
   ],
   "permissions": {
