@@ -4,12 +4,12 @@
   "type": "konnector",
   "language": "node",
   "icon": "icon.svg",
-  "slug": "trainline-collect",
+  "slug": "trainline",
   "source": "git://github.com/konnectors/cozy-konnector-trainline.git#build",
   "editor": "Cozy",
-  "vendorLink": "www.trainline.fr",
+  "vendor_link": "www.trainline.fr",
   "categories": ["transport"],
-  "screenshots": ["screenshots/screenshot.png"],
+  "screenshots": [],
   "fields": {
     "login": {
       "type": "text"
@@ -24,11 +24,11 @@
       }
     }
   },
-  "dataType": [
+  "data_type": [
     "bill"
   ],
   "permissions": {
-    "bank operations": {
+    "bank_operations": {
       "description": "Required to link bills to bank operations",
       "type": "io.cozy.bank.operations"
     },
