@@ -3,7 +3,7 @@
   "name": "Trainline",
   "type": "konnector",
   "language": "node",
-  "icon": "icon.svg",
+  "icon": "trainline.svg",
   "slug": "trainline",
   "source": "git://github.com/konnectors/cozy-konnector-trainline.git#build",
   "editor": "Cozy",
@@ -47,7 +47,7 @@
     }
   },
   "developer": {
-    "name": "Cozy",
+    "name": "Cozy Cloud",
     "url": "https://cozy.io"
   },
   "langs": ["fr", "en"],
