@@ -57,7 +57,7 @@
       "long_description": "Ce fournisseur vous permettra de récupérer l'ensemble de vos factures Trainline dans votre Cozy.",
       "permissions": {
         "bank operations": {
-          "description": "Utilisé pour lier vos factures à vos opérations banquaires"
+          "description": "Utilisé pour lier vos factures à vos opérations bancaires"
         },
         "bills": {
           "description": "Utilisé pour sauvegarder les données de facturation"
