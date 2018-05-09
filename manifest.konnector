@@ -1,14 +1,15 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "name": "Trainline",
   "type": "konnector",
   "language": "node",
-  "icon": "icon.svg",
-  "slug": "konnector-trainline",
-  "source": "git://github.com/cozy/cozy-konnector-trainline.git#build",
+  "icon": "trainline.svg",
+  "slug": "trainline",
+  "source": "git://github.com/konnectors/cozy-konnector-trainline.git#build",
   "editor": "Cozy",
-  "vendorLink": "www.trainline.fr",
+  "vendor_link": "www.trainline.fr",
   "categories": ["transport"],
+  "screenshots": [],
   "fields": {
     "login": {
       "type": "text"
@@ -23,11 +24,11 @@
       }
     }
   },
-  "dataType": [
+  "data_types": [
     "bill"
   ],
   "permissions": {
-    "bank operations": {
+    "bank_operations": {
       "description": "Required to link bills to bank operations",
       "type": "io.cozy.bank.operations"
     },
@@ -46,7 +47,7 @@
     }
   },
   "developer": {
-    "name": "Cozy",
+    "name": "Cozy Cloud",
     "url": "https://cozy.io"
   },
   "langs": ["fr", "en"],
@@ -56,7 +57,7 @@
       "long_description": "Ce fournisseur vous permettra de récupérer l'ensemble de vos factures Trainline dans votre Cozy.",
       "permissions": {
         "bank operations": {
-          "description": "Utilisé pour lier vos factures à vos opérations banquaires"
+          "description": "Utilisé pour lier vos factures à vos opérations bancaires"
         },
         "bills": {
           "description": "Utilisé pour sauvegarder les données de facturation"
