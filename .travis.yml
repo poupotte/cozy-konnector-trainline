@@ -15,23 +15,27 @@ env:
 cache:
   yarn: true
   directories:
-    - node_modules
+  - node_modules
 script:
   - yarn lint
   - yarn build
   - if [ $TRAVIS_SECURE_ENV_VARS = "true" ]; then yarn test; fi
 deploy:
-  # Publish dev versions
-  - provider: script
-    repo: konnectors/cozy-konnector-trainline
-    skip-cleanup: true
-    script: DEPLOY_BRANCH=build && yarn deploy && yarn cozyPublish
-    on:
-      branch: master
-  # Publish beta and stable versions based on tags
-  - provider: script
-    repo: konnectors/cozy-konnector-trainline
-    skip-cleanup: true
-    script: DEPLOY_BRANCH=build && yarn deploy && yarn cozyPublish
-    on:
-      tags: true
+- provider: script
+  repo: konnectors/cozy-konnector-trainline
+  skip-cleanup: true
+  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
+  on:
+    branch: master
+- provider: script
+  repo: konnectors/cozy-konnector-trainline
+  skip-cleanup: true
+  script: DEPLOY_BRANCH=latest yarn deploy
+  on:
+    branch: prod
+- provider: script
+  repo: konnectors/cozy-konnector-trainline
+  skip-cleanup: true
+  script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
+  on:
+    tags: true
