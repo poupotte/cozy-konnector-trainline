@@ -1,41 +1,42 @@
 language: node_js
 node_js:
-  - '8'
+- '8'
 env:
   global:
-    # kosssi GITHUB_TOKEN
-    # to generate yours : travis encrypt GITHUB_TOKEN=<your_GITHUB_TOKEN> -r konnectors/cozy-konnector-trainline
-    - secure: "jHhacVE25GoA8LbI29IXSF4dZNtpORQ5dgivVz3vnrd0mVlNFZHNd8Ny7CqR6ma9k90Xnsxa76jwDhb062y7EtQygUeQcryh/7rj2VGWFV77x5s/ldGLjlfFjhdmo8FTdctiHS21Q9xubBISWRSlQjVcrYCIKzqc5BAoaYUNIFo5pUkYjon2wPxUJr8G68PWEJeCqG5gnpzElXSoluW5MSPV9hQ8GgK8lYLztwoI+Ptmtye0PwiKxmgVlLNA+YJY1Fu6to3RKMvEqRdeB+BpaKVB8LuRlOjxrTuXaLwykF6yIWTqf+n7htlKpPp9WF3a8tfqeb2KCx/Au0/AfqMpLs6HIjH3RSWliiAogII3to0njG8B7+XqMAOYhhpYQLH/MdJ0PUmhixZ7tFo2EiikZ//hgd3xs80oCNk2aXMUhkhBzU/JSQKTtPQ83k7Zgs+CYDtOX0NBeWBAsON1KlcdIdE5+ofQpmRmYGGH8BMI+LDdHRngxcPDqnWITQu7wbp9akCGYDG3izjlG2haHU9zZ651uBhK2AMQEW20X74YlLtMJJL3b+KGu2OFQ0Vdbcit30s/YnSJc050gaEIySZyOU8VcOb0kyo7JWDZTD7cny5KeAkB0pnb45nDLJ7mUg6FbLkp5JWmDf2TBd0DFmZcT7AO6mUM9epwh7zuX1ebi28="
-    # kosssi account
-    # to generate yours : travis encrypt KONNECTOR_CONFIG=\'"`cat konnector-dev-config.json | tr -d '\n'`"\' -r konnectors/cozy-konnector-trainline
-    - secure: "IDb67cH3bN4tcJnbbHVbYphM1d6ggYireDmSVeAn1mmsZpDdH1O/ggTEGnNQd2YTpwDU94/GGHbEvD/0qZnG9a5jTX39EBQJNylcGlbW+7DZBHuYweWJfBkU3OcnABHJSFoC+tUo0/uXsM6qO9oORijwjyVZBE8xBySdTRllVj7Cl3qll46ejYDYUayV0WUFTJGloNnqMa0ZflYMU3vD2qP2ntoafWXojTJh6SMPsR+UOdI6qC3fX8qgxRXb1Pkff2DxTxfYPUKT0dmc6geuYjx2TpYKrvUkV9hABUk6Axkr3GnAXpDusMaUXWnfy9j8WYrnG0XOQV7fqlVrKBujyxoZWBBsl9ffMeYSumiMooDQ+3ncXdcBSSGbpFsx0SYGRGAFxA31yXUOrFbA//qzwP6cQ7YVlW3aVQKVw+0m429RiHvEKcfwpazAxsJydRmCxMSGMGwsLnYa3YqNYsBZa9U+s89Lhn2lLXGnUJWJQsH+4z4mrsiEHx1gpXgrwsOTkXonT8T3KJDqpt4pMiYuoU5QP6t17rD7Oc4REo1VMcPTufWprN0DuC5Frc57Pv76yoxch3QEAdSw1UJGtdfUcJEJYqEgVjBFy+iwBx8ssMIxOl4ZPJ96StZ4/0ZuGZ3Su2wtgSRSjmLM5amXRdcNv75j+T/wNVOtWwbF+bw6CsM="
-    # REGISTRY_TOKEN
-    # to generate : travis encrypt REGISTRY_TOKEN=<your_REGISTRY_TOKEN> -r konnectors/cozy-konnector-trainline
-    - secure: "C2Ko8x9bVZhqIiYWqkJHxwsodRwvj5TZpYNP6BMfFffCFcuNBDm9e7kdgVuhfSU6DdmTx74OtoUPrw6MZnmJXYgQwMsTopGTLMsgIACHR/9/oGn3qenbPHwYjDLlP44EQHut74Io/xudbVkHGelk0RrxjcYkChGpXnH8CIpZtDhN9mdZ0Ii0TyGLyEhzG+jA/6rLZfv1mQqggiQn43LY4hWIw9lcA6PIkwCDblNCjeKairIdnafJsXuB26unsKqJiiwbVxCJClLhp9DZvN6UfiNH83nzTj9bz/v+pjSYMsIC8deOFejOL2ivhSZXIc77CjkUeopLN0yrxpagLycxakVUhbzaiyynesOQHf+sySpin5pq3KglefLOEy5vEn2EgJNiYiVTnrHwUYwyzQOvVWhsZT5ET0FVjfteIs4ZCsgbFSU+C7xZb3sOB7MwkVLVUeDqBGx9SdPLe/Cv/vSM4RXUlb98GhR9ng2n880F8GJ7iEPDxLNBE98ocOWZ9tiO2C+/3K3DAlaBIka21L0/1wYC0Rjq+QCTctkJDIZYXx9/sDM3WJK2pEf/fQ9iEF0FeuXncoBzI1ybNA1b7gFEgihisHFaYfrisPx+ChHdYVz1Lq0FBBsKLSgtD305mK5OhEoa5dR5TXUIXfb4yGggLmmLNU4Z73s+WGooKYJkcrQ="
+  - GH_USER_EMAIL="travis@example.org"
+  - GH_USER_NAME="cozy-bot"
+  - DEPLOY_REPOSITORY="git@github.com:konnectors/cozy-konnector-trainline.git"
+  - secure: Zrws2LKlidB15JxoceFit9C8XhCDarUlfY6SniSFrafMZKTPinTLlAuQ8vaPSBVvxMJNSYhiTSEq3XMq9PBasvq1WT1xZp5B0AAoq5ulUVcW2PIbGjzeE3Xo2sneLmPQDrcsvdY90BjWalgcG0UkIcFvdcMZFjgzhbqcVxxGTuN7IXia3PbRo50u+uVtMWcXH7HAR2YHyLqxkKS4+jpTJlGj0wDvQv5KC0UqxZnnR6hEG4vuZi2h4Pg2CFm6Svc028NqicYYr7KaVcSkbLeVXEm7be6q+DuF1nWiZiSGInlXoya0Lz3fj+OGG8vJVAne/2fkGEP+UAr+SEUbBiu3/gZ/JJXMUa10gVLznQ+Q6e34tA1Zy2AvLxcT/I2VhX2+G2jb/rXlotASrzh36XhWPKKCoUPk/p4aB2dnRGreoGz0+aR2AnifP5yQlpXwqZbuOEXEm2B3GuZIFOcu/USmu3PlNYe+VS9hoDM++XEz6jzqR7ylgAhEO12WEKBEj9GUA82xGghWkqs7w9LDtvh7lEkTWD4417iADqNX5EDuXhWXJO7w9aq4DjJ7tKR2nfetPUVy3ZnFebqCi8h+TUuUZQHfrDoLZyk71RYFBKUz01aGImIVmO502n7L67or7kNi3WRqZobs/mtGQrALY0gRMN5rFccTACI3ibve2fl0ROE=
 cache:
   yarn: true
   directories:
   - node_modules
 script:
-  - yarn lint
-  - yarn build
-  - if [ $TRAVIS_SECURE_ENV_VARS = "true" ]; then yarn test; fi
+- yarn lint
+- yarn build
+- if [ $TRAVIS_SECURE_ENV_VARS = "true" ]; then yarn test; fi
 deploy:
 - provider: script
-  repo: konnectors/cozy-konnector-trainline
   skip-cleanup: true
   script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
   on:
     branch: master
 - provider: script
-  repo: konnectors/cozy-konnector-trainline
   skip-cleanup: true
   script: DEPLOY_BRANCH=latest yarn deploy
   on:
     branch: prod
 - provider: script
-  repo: konnectors/cozy-konnector-trainline
   skip-cleanup: true
   script: DEPLOY_BRANCH=build yarn deploy && yarn cozyPublish
   on:
     tags: true
+before_install:
+- openssl aes-256-cbc -K $encrypted_70abefe03a61_key -iv $encrypted_70abefe03a61_iv
+  -in github_deploy_key.enc -out /tmp/github_deploy_key -d
+- eval "$(ssh-agent -s)"
+- chmod 600 /tmp/github_deploy_key
+- ssh-add /tmp/github_deploy_key
+after_deploy:
+- rm /tmp/github_deploy_key
+- ssh-add -D

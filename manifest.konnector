@@ -1,15 +1,14 @@
 {
-  "version": "0.1.1",
+  "version": "1.0.0",
   "name": "Trainline",
   "type": "konnector",
   "language": "node",
   "icon": "trainline.svg",
   "slug": "trainline",
-  "source": "git://github.com/konnectors/cozy-konnector-trainline.git#build",
+  "source": "git://github.com/konnectors/cozy-konnector-trainline.git",
   "editor": "Cozy",
   "vendor_link": "www.trainline.fr",
   "categories": ["transport"],
-  "screenshots": [],
   "fields": {
     "login": {
       "type": "text"
